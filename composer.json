@@ -1,0 +1,26 @@
+{
+    "name": "shay3gan/unig",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Shay3gan\\UNIG\\Commands\\": "src/commands"
+        },
+        "files": [
+            "src/Config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Shaygan",
+            "email": "shsh512@pm.me"
+        }
+    ],
+    "require": {
+        "nutgram/nutgram": "^3.7",
+        "ext-json": "*",
+        "ext-mysqli": "*",
+        "ext-mbstring": "*",
+        "ext-curl": "*"
+    }
+}
