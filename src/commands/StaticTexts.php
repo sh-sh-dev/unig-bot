@@ -26,7 +26,11 @@ class StaticTexts {
 - /classes {location} {day} {time}
 ➖➖
 + same as /classes, but people count?
-- /people {location} {day} {time}";
+- /people {location} {day} {time}
+➖➖
++ what do students think about {teacher}?
+- /wiki {teacher}";
+
         $bot->sendMessage($help, [
             'reply_to_message_id' => $bot->messageId(),
         ]);

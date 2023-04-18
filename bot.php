@@ -33,6 +33,11 @@ $bot->onCommand("classes {location} / {day} / {time}", [DataController::class, "
 $bot->onCommand("people {location} / {day} / {time}", [DataController::class, "people"])
     ->description("same as /classes, but people count");
 
+$bot->onCommand("wiki {teacher}", [DataController::class, "wikiSearch"])
+    ->description("search in wiki about an {teacher}");
+
+$bot->onCommand("wiki_{id}", [DataController::class, "wikiDetails"]);
+
 // Run
 
 $bot->registerMyCommands();

@@ -81,6 +81,40 @@ class DataController {
         }
     }
 
+    public function wikiSearch(Bot $bot, string $teacher): void
+    {
+        $this->bot = $bot;
+
+        $searchResult = Config::db()->query("SELECT `id`, `name`, `details` from `wiki` where `name` LIKE '%$teacher%'")->fetch_all(MYSQLI_ASSOC);
+
+        if (!$searchResult) {
+            $bot->sendMessage("we have no information about the mentioned teacher", $this->options());
+        }
+        else {
+            $list = [];
+            foreach ($searchResult as $item) {
+                $list[] = "🧑‍🏫 $item[name]: /wiki_$item[id]";
+            }
+
+            $bot->sendMessage(implode("\n\n", $list), $this->options());
+        }
+    }
+
+    public function wikiDetails(Bot $bot, int $id): void
+    {
+        $this->bot = $bot;
+
+        $result = Config::db()->query("SELECT `details` from `wiki` where `id` = '$id'")->fetch_assoc();
+
+        if (!$result) {
+            $bot->sendMessage("invalid id", $this->options());
+        }
+        else {
+            $bot->sendMessage($result['details'], $this->options());
+        }
+    }
+
+
     private function validate(&...$values): void
     {
         foreach ($values as &$val) {
