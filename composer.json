@@ -21,6 +21,7 @@
         "ext-json": "*",
         "ext-mysqli": "*",
         "ext-mbstring": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

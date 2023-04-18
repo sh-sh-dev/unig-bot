@@ -4,19 +4,25 @@ namespace Shay3gan\UNIG;
 require_once 'jdf.php';
 
 use mysqli;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
 class Config {
     public static mysqli $db;
 
     public function __construct()
     {
-        date_default_timezone_set('Asia/Tehran');
+        self::checkSecurity();
+
+        date_default_timezone_set($_ENV['TIMEZONE']);
 
         $dbConf = [
-            'host' => 'localhost',
-            'user' => 'root',
-            'password' => '',
-            'name' => 'unig-bot'
+            'host' => $_ENV['DB_HOST'],
+            'user' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASS'],
+            'name' => $_ENV['DB_NAME'],
         ];
 
         self::$db = new mysqli(
@@ -31,24 +37,22 @@ class Config {
         self::$db->query("SET character_set_connection = 'utf8mb4'");
     }
 
-    public static function db()
+    public static function db(): mysqli
     {
         return self::$db;
     }
 
-    public static function getToken()
+    public static function getToken(): string
     {
-        return '123:abc';
+        return $_ENV['TOKEN'];
+    }
+
+    public static function checkSecurity(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST')
+            die('method');
+
+        else if ($_GET['secret'] !== $_ENV['WEBHOOK_SECRET'])
+            die('secret');
     }
 }
-
-$adminId = '123';
-$webhookSecret = 'SomeRandomLongText';
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST')
-    die('method');
-
-else if ($_GET['secret'] !== $webhookSecret)
-    die('secret');
-
-
