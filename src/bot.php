@@ -4,8 +4,9 @@ require_once "vendor/autoload.php";
 use SergiX44\Nutgram\Nutgram as Bot;
 use Shay3gan\UNIG\Commands\DataController;
 use Shay3gan\UNIG\Commands\StaticTexts;
+use Shay3gan\UNIG\Config;
 
-$config = new \Shay3gan\UNIG\Config();
+$config = new Config();
 
 $bot = new Bot($config::getToken());
 $bot->setRunningMode(\SergiX44\Nutgram\RunningMode\Webhook::class);

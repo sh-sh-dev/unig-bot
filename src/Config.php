@@ -1,8 +1,6 @@
 <?php
 namespace Shay3gan\UNIG;
 
-require_once 'jdf.php';
-
 use mysqli;
 use Dotenv\Dotenv;
 
@@ -14,7 +12,7 @@ class Config {
 
     public function __construct()
     {
-        self::checkSecurity();
+//        self::checkSecurity();
 
         date_default_timezone_set($_ENV['TIMEZONE']);
 

@@ -110,7 +110,7 @@ class DataController {
             $bot->sendMessage("invalid id", $this->options());
         }
         else {
-            $bot->sendMessage($result['details'], $this->options());
+            $bot->sendMessage($result["details"], $this->options());
         }
     }
 
@@ -139,11 +139,11 @@ class DataController {
     private function humanizedArray(array $data, $multidimensional): string
     {
         $titles = [
-            'title' => '📗',
-            'location' => '📍',
-            'teacher' => '👨‍🏫',
-            'gp' => '📚',
-            'time' => '⌚',
+            "title" => "📗",
+            "location" => "📍",
+            "teacher" => "👨‍🏫",
+            "gp" => "📚",
+            "time" => "⌚",
         ];
         $result = "";
 
@@ -179,9 +179,9 @@ class DataController {
         $time = date("Gi");
 
         return [
-            'day' => $day,
-            'time' => $time,
-            'query' => "`day` = '$day' and '$time' between `start` and `end`",
+            "day" => $day,
+            "time" => $time,
+            "query" => "`day` = '$day' and '$time' between `start` and `end`",
         ];
     }
 }

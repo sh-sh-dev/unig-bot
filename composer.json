@@ -4,10 +4,10 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Shay3gan\\UNIG\\Commands\\": "src/commands"
+            "Shay3gan\\UNIG\\": "src/"
         },
         "files": [
-            "src/Config.php"
+            "src/jdf.php"
         ]
     },
     "authors": [

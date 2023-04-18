@@ -7,7 +7,7 @@ class StaticTexts {
     public function start(Bot $bot): void
     {
         $bot->sendMessage("hi", [
-            'reply_to_message_id' => $bot->messageId(),
+            "reply_to_message_id" => $bot->messageId(),
         ]);
     }
 
@@ -32,7 +32,7 @@ class StaticTexts {
 - /wiki {teacher}";
 
         $bot->sendMessage($help, [
-            'reply_to_message_id' => $bot->messageId(),
+            "reply_to_message_id" => $bot->messageId(),
         ]);
     }
 }
